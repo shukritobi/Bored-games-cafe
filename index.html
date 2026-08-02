@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#171717" />
+  <meta name="description" content="Bored. Play Hub prototype for bookings, events, game discovery and community." />
+  <title>Bored. Play Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Bored home">
+      <span class="brand-mark">bored.</span>
+      <span class="brand-sub">play hub</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#games">Games</a>
+      <a href="#events">Events</a>
+      <a href="#branches">Branches</a>
+      <a href="#private-events">Private events</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="text-link" href="dashboard.html">Staff demo</a>
+      <button class="button button-dark" data-open-booking>Book a table</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-dot"></span> Open daily, 10AM to 12AM</div>
+        <h1>Your table is waiting.<br /><em>Bring your people.</em></h1>
+        <p class="hero-lede">Discover games, reserve a table and join the next social night at Bored. Damansara Jaya or Tamarind Square.</p>
+
+        <div class="hero-actions">
+          <button class="button button-accent" data-open-booking>Reserve your table</button>
+          <a class="button button-ghost" href="#games">Find a game</a>
+        </div>
+
+        <div class="social-proof">
+          <div class="avatar-stack" aria-hidden="true">
+            <span>R</span><span>A</span><span>M</span><span>+</span>
+          </div>
+          <p><strong>3,000+ local players</strong><br />and a growing KL board game community</p>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal delay-1" aria-label="Illustrated board game table">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="game-table">
+          <div class="card card-a"><span>MOVE</span><strong>+2</strong></div>
+          <div class="card card-b"><span>TEAM</span><strong>UP</strong></div>
+          <div class="card card-c"><span>ROLL</span><strong>06</strong></div>
+          <div class="meeple meeple-a"></div>
+          <div class="meeple meeple-b"></div>
+          <div class="meeple meeple-c"></div>
+          <div class="dice dice-a"><i></i><i></i><i></i><i></i></div>
+          <div class="dice dice-b"><i></i><i></i><i></i></div>
+          <div class="token token-a">B</div>
+          <div class="token token-b">.</div>
+          <div class="table-label">Tonight's mission:<br /><strong>log off and play.</strong></div>
+        </div>
+        <div class="floating-note note-one">150+ games</div>
+        <div class="floating-note note-two">Beginner friendly</div>
+      </div>
+    </section>
+
+    <section class="booking-strip section-shell reveal" aria-label="Quick reservation">
+      <div class="booking-field">
+        <span class="field-label">Branch</span>
+        <select id="quickBranch" aria-label="Choose branch">
+          <option>Damansara Jaya</option>
+          <option>Tamarind Square</option>
+        </select>
+      </div>
+      <div class="booking-field">
+        <span class="field-label">Date</span>
+        <input id="quickDate" type="date" aria-label="Choose date" />
+      </div>
+      <div class="booking-field">
+        <span class="field-label">Time</span>
+        <select id="quickTime" aria-label="Choose time">
+          <option>7:00 PM</option>
+          <option>8:00 PM</option>
+          <option>9:00 PM</option>
+          <option>10:00 PM</option>
+        </select>
+      </div>
+      <div class="booking-field">
+        <span class="field-label">Players</span>
+        <select id="quickPlayers" aria-label="Choose number of players">
+          <option>2 players</option>
+          <option>3 players</option>
+          <option selected>4 players</option>
+          <option>5 players</option>
+          <option>6+ players</option>
+        </select>
+      </div>
+      <button class="button button-accent booking-cta" data-open-booking>Check availability</button>
+    </section>
+
+    <section class="intro section-shell reveal">
+      <div>
+        <div class="eyebrow">What are you in the mood for?</div>
+        <h2>Pick your kind of night.</h2>
+      </div>
+      <p>No awkward spreadsheets or endless chat threads. Start with a vibe, then the Play Hub guides you to the right table, game or event.</p>
+    </section>
+
+    <section class="vibe-grid section-shell">
+      <article class="vibe-card vibe-large reveal" data-filter-jump="party">
+        <div class="vibe-art vibe-party" aria-hidden="true">
+          <span class="burst burst-1">!</span>
+          <span class="burst burst-2">?</span>
+          <span class="burst burst-3">★</span>
+          <div class="big-type">LOUD<br />NIGHT</div>
+        </div>
+        <div class="vibe-copy">
+          <span>For 4 to 10 players</span>
+          <h3>Big laughs and easy rules</h3>
+          <p>Party games that get the whole table involved in under five minutes.</p>
+        </div>
+      </article>
+
+      <article class="vibe-card reveal delay-1" data-filter-jump="strategy">
+        <div class="vibe-art vibe-strategy" aria-hidden="true">
+          <div class="grid-lines"></div>
+          <span class="strategy-piece piece-1"></span>
+          <span class="strategy-piece piece-2"></span>
+          <span class="strategy-piece piece-3"></span>
+        </div>
+        <div class="vibe-copy">
+          <span>For patient masterminds</span>
+          <h3>Plan three moves ahead</h3>
+          <p>Build, negotiate and quietly ruin your friend's perfect strategy.</p>
+        </div>
+      </article>
+
+      <article class="vibe-card reveal delay-2" data-filter-jump="couples">
+        <div class="vibe-art vibe-date" aria-hidden="true">
+          <div class="date-card date-card-a">YOU</div>
+          <div class="date-card date-card-b">ME</div>
+          <div class="date-heart">♥</div>
+        </div>
+        <div class="vibe-copy">
+          <span>For two players</span>
+          <h3>A better date night</h3>
+          <p>Two-player favourites, cosy tables and no pressure to be good at games.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="games" class="games-section">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">Interactive games finder</div>
+            <h2>Find your table's perfect game.</h2>
+          </div>
+          <p>Filter by mood, player count and difficulty. Availability shown here is demo data for the prototype.</p>
+        </div>
+
+        <div class="filter-panel reveal">
+          <div class="filter-group" aria-label="Filter games by category">
+            <button class="filter-chip active" data-game-filter="all">All games</button>
+            <button class="filter-chip" data-game-filter="party">Party</button>
+            <button class="filter-chip" data-game-filter="strategy">Strategy</button>
+            <button class="filter-chip" data-game-filter="couples">Two-player</button>
+            <button class="filter-chip" data-game-filter="beginner">Beginner</button>
+            <button class="filter-chip" data-game-filter="social">Social deduction</button>
+          </div>
+          <label class="search-box">
+            <span class="sr-only">Search games</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="gameSearch" type="search" placeholder="Search by name or mood" />
+          </label>
+        </div>
+
+        <div id="gameGrid" class="game-grid" aria-live="polite"></div>
+        <div id="emptyGames" class="empty-state" hidden>No games match that search. Try another mood.</div>
+      </div>
+    </section>
+
+    <section id="events" class="events-section section-shell">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">Upcoming at Bored.</div>
+          <h2>Come for a game, leave with a group chat.</h2>
+        </div>
+        <a class="text-arrow" href="#events">View full calendar <span>↗</span></a>
+      </div>
+
+      <div class="event-list">
+        <article class="event-card reveal">
+          <div class="event-date"><strong>08</strong><span>AUG<br />THU</span></div>
+          <div class="event-main">
+            <div class="event-tags"><span>Weekly</span><span>Beginner friendly</span></div>
+            <h3>Thursday Night Board Game Social</h3>
+            <p>Small-group tables, guided recommendations and plenty of room for first-timers.</p>
+          </div>
+          <div class="event-meta">
+            <p><strong>7:30 PM</strong><br />Damansara Jaya</p>
+            <p><strong>RM30</strong><br />18 seats left</p>
+          </div>
+          <button class="round-button" data-event-booking="Thursday Night Board Game Social" aria-label="Book Thursday Night Board Game Social">↗</button>
+        </article>
+
+        <article class="event-card reveal delay-1">
+          <div class="event-date"><strong>17</strong><span>AUG<br />SAT</span></div>
+          <div class="event-main">
+            <div class="event-tags"><span>Immersive</span><span>Limited seats</span></div>
+            <h3>The Last Course: A Murder Mystery Dinner</h3>
+            <p>An evening of clues, suspicious tablemates and a three-course dinner.</p>
+          </div>
+          <div class="event-meta">
+            <p><strong>6:30 PM</strong><br />Tamarind Square</p>
+            <p><strong>RM128</strong><br />7 seats left</p>
+          </div>
+          <button class="round-button" data-event-booking="The Last Course: A Murder Mystery Dinner" aria-label="Book murder mystery dinner">↗</button>
+        </article>
+
+        <article class="event-card reveal delay-2">
+          <div class="event-date"><strong>24</strong><span>AUG<br />SAT</span></div>
+          <div class="event-main">
+            <div class="event-tags"><span>Community</span><span>Solo friendly</span></div>
+            <h3>Strangers to Teammates</h3>
+            <p>Arrive solo, get matched by game preference and meet a new table of players.</p>
+          </div>
+          <div class="event-meta">
+            <p><strong>8:00 PM</strong><br />Damansara Jaya</p>
+            <p><strong>RM35</strong><br />12 seats left</p>
+          </div>
+          <button class="round-button" data-event-booking="Strangers to Teammates" aria-label="Book Strangers to Teammates">↗</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="branches" class="branches-section">
+      <div class="section-shell">
+        <div class="section-heading light reveal">
+          <div>
+            <div class="eyebrow">Two places to play</div>
+            <h2>Choose your branch.</h2>
+          </div>
+          <p>One account, one booking history and live availability across both Bored. locations.</p>
+        </div>
+
+        <div class="branch-grid">
+          <article class="branch-card branch-dj reveal">
+            <div class="branch-topline"><span>01</span><span class="live-pill">● Tables available</span></div>
+            <div class="branch-photo branch-photo-dj" role="img" aria-label="Abstract illustration of Damansara Jaya branch"></div>
+            <div class="branch-content">
+              <h3>Damansara Jaya</h3>
+              <p>The original neighbourhood hangout with cosy tables, regular socials and a deep game shelf.</p>
+              <div class="branch-details">
+                <span>Open daily<br /><strong>10AM to 12AM</strong></span>
+                <span>Best for<br /><strong>Social nights</strong></span>
+              </div>
+              <button class="button button-light" data-branch-booking="Damansara Jaya">Book this branch</button>
+            </div>
+          </article>
+
+          <article class="branch-card branch-ts reveal delay-1">
+            <div class="branch-topline"><span>02</span><span class="live-pill">● Private room open</span></div>
+            <div class="branch-photo branch-photo-ts" role="img" aria-label="Abstract illustration of Tamarind Square branch"></div>
+            <div class="branch-content">
+              <h3>Tamarind Square</h3>
+              <p>A spacious Cyberjaya branch for group sessions, private events and unhurried weekend games.</p>
+              <div class="branch-details">
+                <span>Open daily<br /><strong>10AM to 12AM</strong></span>
+                <span>Best for<br /><strong>Private groups</strong></span>
+              </div>
+              <button class="button button-light" data-branch-booking="Tamarind Square">Book this branch</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="private-events" class="private-section section-shell">
+      <div class="private-copy reveal">
+        <div class="eyebrow">Private events and team building</div>
+        <h2>Give your group something better to talk about.</h2>
+        <p>Build a birthday, company social or full-venue event with guided games, catering and optional hosts.</p>
+        <ul class="check-list">
+          <li>Private room or full venue</li>
+          <li>Game host and custom game selection</li>
+          <li>Food, drinks and themed add-ons</li>
+          <li>Instant estimate and deposit link</li>
+        </ul>
+        <a class="button button-dark" href="https://wa.me/60126018795?text=Hi%20Bored.%2C%20I%20would%20like%20to%20plan%20a%20private%20event." target="_blank" rel="noreferrer">Discuss on WhatsApp</a>
+      </div>
+
+      <div class="quote-builder reveal delay-1">
+        <div class="quote-header">
+          <div>
+            <span>Quick estimate</span>
+            <h3>Build your event</h3>
+          </div>
+          <span class="prototype-pill">Prototype</span>
+        </div>
+
+        <label class="builder-field">
+          <span>Event type</span>
+          <select id="eventType">
+            <option value="birthday">Birthday gathering</option>
+            <option value="corporate">Corporate team building</option>
+            <option value="venue">Full venue rental</option>
+          </select>
+        </label>
+
+        <label class="builder-field">
+          <span>Branch</span>
+          <select id="eventBranch">
+            <option>Damansara Jaya</option>
+            <option>Tamarind Square</option>
+          </select>
+        </label>
+
+        <label class="builder-field range-field">
+          <span>Guests <strong id="guestCount">20</strong></span>
+          <input id="guestRange" type="range" min="8" max="80" value="20" step="2" />
+          <div class="range-labels"><span>8</span><span>80</span></div>
+        </label>
+
+        <div class="addon-grid">
+          <label><input class="event-addon" type="checkbox" value="180" /> <span>Game host</span></label>
+          <label><input class="event-addon" type="checkbox" value="300" /> <span>Food package</span></label>
+          <label><input class="event-addon" type="checkbox" value="220" /> <span>Decor setup</span></label>
+          <label><input class="event-addon" type="checkbox" value="150" /> <span>Projector</span></label>
+        </div>
+
+        <div class="estimate-total">
+          <span>Estimated from</span>
+          <strong id="estimateValue">RM720</strong>
+        </div>
+        <button id="quoteButton" class="button button-accent full-button">Request this package</button>
+      </div>
+    </section>
+
+    <section class="membership-section">
+      <div class="membership-card section-shell reveal">
+        <div class="member-number">B.<br />0248</div>
+        <div class="member-copy">
+          <div class="eyebrow">Bored. Regular</div>
+          <h2>Play more. Pay less. Meet your people.</h2>
+          <p>A future membership layer for repeat visitors, early event access and personalised game recommendations.</p>
+          <div class="member-perks">
+            <span>Monthly play credit</span>
+            <span>Priority event access</span>
+            <span>Member-only nights</span>
+          </div>
+        </div>
+        <button class="button button-dark" id="joinWaitlist">Join the waitlist</button>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell reveal">
+      <div class="final-art" aria-hidden="true">
+        <span class="final-die">6</span>
+        <span class="final-card">PLAY<br />TODAY</span>
+        <span class="final-token">B.</span>
+      </div>
+      <div class="final-copy">
+        <div class="eyebrow">Ready when you are</div>
+        <h2>Stop scrolling.<br />Start playing.</h2>
+        <button class="button button-accent" data-open-booking>Book your table</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <span class="brand-mark inverse">bored.</span>
+      <p>Board games, cafe and community.<br />Damansara Jaya and Tamarind Square.</p>
+    </div>
+    <div class="footer-links">
+      <div><strong>Explore</strong><a href="#games">Games</a><a href="#events">Events</a><a href="#branches">Branches</a></div>
+      <div><strong>Connect</strong><a href="https://www.instagram.com/boredgamescafe/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.tiktok.com/@boredgamescafe" target="_blank" rel="noreferrer">TikTok</a><a href="https://wa.me/60126018795" target="_blank" rel="noreferrer">WhatsApp</a></div>
+      <div><strong>Prototype</strong><a href="dashboard.html">Staff dashboard</a><a href="https://github.com/shukritobi/Bored-games-cafe" target="_blank" rel="noreferrer">GitHub repository</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prototype concept for Bored. Games Cafe</span>
+      <span>Built by Shukry</span>
+    </div>
+  </footer>
+
+  <button class="mobile-booking-button" data-open-booking>Book a table</button>
+
+  <div id="bookingModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+    <div class="modal-backdrop" data-close-booking></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close-booking aria-label="Close booking form">×</button>
+      <div id="bookingFormView">
+        <div class="eyebrow">Fast reservation</div>
+        <h2 id="bookingTitle">Book your Bored. table</h2>
+        <p class="modal-intro">This is a working front-end prototype. No real payment will be collected.</p>
+
+        <form id="bookingForm">
+          <div class="form-grid">
+            <label><span>Branch</span><select id="modalBranch" required><option>Damansara Jaya</option><option>Tamarind Square</option></select></label>
+            <label><span>Booking type</span><select id="modalType" required><option>General table</option><option>Private room</option><option>Event ticket</option></select></label>
+            <label><span>Date</span><input id="modalDate" type="date" required /></label>
+            <label><span>Arrival time</span><select id="modalTime" required><option>7:00 PM</option><option>8:00 PM</option><option>9:00 PM</option><option>10:00 PM</option></select></label>
+            <label><span>Players</span><input id="modalPlayers" type="number" min="1" max="30" value="4" required /></label>
+            <label><span>Name</span><input type="text" placeholder="Your name" required /></label>
+            <label class="full-span"><span>Mobile number</span><input type="tel" placeholder="012 345 6789" required /></label>
+          </div>
+
+          <div class="booking-summary">
+            <span>Estimated deposit</span>
+            <strong id="depositValue">RM30</strong>
+          </div>
+          <button class="button button-accent full-button" type="submit">Continue to payment</button>
+        </form>
+      </div>
+
+      <div id="bookingSuccessView" class="success-view" hidden>
+        <div class="success-icon">✓</div>
+        <div class="eyebrow">Demo reservation created</div>
+        <h2>Your table is on hold.</h2>
+        <p id="successDetails">We have prepared a demo booking summary.</p>
+        <div class="success-ticket">
+          <span>Booking reference</span>
+          <strong id="bookingReference">BORED-2408</strong>
+          <small>Prototype only, no payment taken</small>
+        </div>
+        <button class="button button-dark full-button" data-close-booking>Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
